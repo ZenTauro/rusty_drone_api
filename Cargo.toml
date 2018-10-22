@@ -1,7 +1,11 @@
 [package]
-name = "drone-api"
+name    = "drone-api"
 version = "0.1.0"
 authors = ["zentauro <pedrogomezmartin1999@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+serde        = "1.0.70"
+serde_derive = "1.0.70"
+serde_json   = "1.0"
+reqwest      = "0.9.3"
