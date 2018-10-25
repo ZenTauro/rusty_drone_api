@@ -81,6 +81,14 @@ impl Client {
         return Ok(users)
     }
 
+    pub fn get_repo_info(&self, owner: &String, repo: &String) -> Result<Repo, serde_json::Error> {
+        let url = format!("{}/repos/{}/{}", self.base_url, owner, repo);
+        let serial = self.get(&url);
+        let repo: Repo = serde_json::from_str(&serial)?;
+
+        return Ok(repo)
+    }
+
     pub fn get_build_info(&self, owner: &String, repo: &String, build: &String) -> Result<Build, serde_json::Error> {
         let url = format!("{}/repos/{owner}/{repo}/builds/{build}", self.base_url,
             owner = owner, repo = repo, build = build);
@@ -88,5 +96,32 @@ impl Client {
         let build: Build = serde_json::from_str(&serial)?;
 
         return Ok(build)
+    }
+
+    pub fn get_build_list(&self, owner: &String, repo: &String) -> Result<Vec<Build>, serde_json::Error> {
+        let url = format!("{}/repos/{owner}/{repo}/builds", self.base_url,
+            owner = owner, repo = repo);
+        let serial = self.get(&url);
+        let builds: Vec<Build> = serde_json::from_str(&serial)?;
+
+        return Ok(builds)
+    }
+
+    pub fn get_registry_info(&self, owner: &String, repo: &String, registry: &String) -> Result<RegistryInfo, serde_json::Error> {
+        let url = format!("{}/repos/{owner}/{repo}/registry/{registry}", self.base_url,
+            owner = owner, repo = repo, registry = registry);
+        let serial = self.get(&url);
+        let registry: RegistryInfo = serde_json::from_str(&serial)?;
+
+        return Ok(registry)
+    }
+
+    pub fn get_registry_list(&self, owner: &String, repo: &String) -> Result<Vec<RegistryInfo>, serde_json::Error> {
+        let url = format!("{}/repos/{owner}/{repo}/registry", self.base_url,
+            owner = owner, repo = repo);
+        let serial = self.get(&url);
+        let registries: Vec<RegistryInfo> = serde_json::from_str(&serial)?;
+
+        return Ok(registries)
     }
 }

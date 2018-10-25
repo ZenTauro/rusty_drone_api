@@ -147,3 +147,13 @@ pub struct Build {
     #[serde(rename = "reviewed_at")]
     reviewed_at: i64,
 }
+
+#[derive(Serialize, Deserialize)]
+pub struct RegistryInfo {
+    id: i64,
+    address: String,
+    username: String,
+    password: String,
+    email: String,
+    token: String,
+}
