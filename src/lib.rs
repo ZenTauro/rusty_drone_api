@@ -19,10 +19,16 @@ impl Client {
     /// # Arguments
     /// * `auth_token` - The authorization token provided in your account
     /// * `base_url`   - The url with no path
-    /// 
+    ///
     /// # Examples
     /// ```
-    /// let drone_client = Client::new("randomsupersecrettoken", dorne.example.org);
+    /// extern crate drone_api;
+    /// use drone_api::Client;
+    ///
+    /// let drone_client = Client::new(
+    ///     "randomsupersecrettoken".to_owned(),
+    ///     "drone.example.org".to_owned()
+    /// );
     /// ```
     /// note that there is no trasport in the url
     pub fn new(auth_token: String, base_url: String) -> Client {
@@ -39,6 +45,8 @@ impl Client {
             .send().unwrap().text().unwrap()
     }
 
+    /// Retrieves the user information corresponfing to the
+    /// provided authorization token.
     pub fn get_current_user(&self) -> Result<UserInfo, serde_json::Error> {
         let url = format!("{}/user", self.base_url);
         let serial = self.get(&url);
@@ -47,6 +55,8 @@ impl Client {
         return Ok(user_info)
     }
 
+    /// Retrieves the repos registered to the corresponding
+    /// user.
     pub fn get_current_user_repos(&self) -> Result<Vec<Repo>, serde_json::Error> {
         let url = format!("{}/user/repos", self.base_url);
         let serial = self.get(&url);

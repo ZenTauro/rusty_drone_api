@@ -1,12 +1,12 @@
 /// Contains the information regarding an user
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct UserInfo {
-    id: i64,
-    login: String,
-    email: String,
-    avatar_url: String,
-    admin: bool,
-    active: bool,
+    pub id: i64,
+    pub login: String,
+    pub email: String,
+    pub avatar_url: String,
+    pub admin: bool,
+    pub active: bool,
 }
 
 /// Contains information about a repo
@@ -35,44 +35,45 @@ pub struct Repo {
     config_file: String,
 }
 
+/// Contains a feed element
 #[derive(Serialize, Deserialize)]
 pub struct FeedElement {
     #[serde(rename = "owner")]
-    owner: String,
+    pub owner: String,
     #[serde(rename = "name")]
-    name: String,
+    pub name: String,
     #[serde(rename = "full_name")]
-    full_name: String,
+    pub full_name: String,
     #[serde(rename = "number")]
-    number: i64,
+    pub number: i64,
     #[serde(rename = "event")]
-    event: Event,
+    pub event: Event,
     #[serde(rename = "status")]
-    status: Status,
+    pub status: Status,
     #[serde(rename = "created_at")]
-    created_at: i64,
+    pub created_at: i64,
     #[serde(rename = "started_at")]
-    started_at: i64,
+    pub started_at: i64,
     #[serde(rename = "finished_at")]
-    finished_at: i64,
+    pub finished_at: i64,
     #[serde(rename = "commit")]
-    commit: String,
+    pub commit: String,
     #[serde(rename = "branch")]
-    branch: String,
+    pub branch: String,
     #[serde(rename = "ref")]
-    test_ref: String,
+    pub test_ref: String,
     #[serde(rename = "message")]
-    message: String,
+    pub message: String,
     #[serde(rename = "author")]
-    author: String,
+    pub author: String,
     #[serde(rename = "author_avatar")]
-    author_avatar: String,
+    pub author_avatar: String,
     #[serde(rename = "author_email")]
-    author_email: String,
+    pub author_email: Option<String>,
     #[serde(rename = "refspec")]
-    refspec: Option<String>,
+    pub refspec: Option<String>,
     #[serde(rename = "title")]
-    title: Option<String>,
+    pub title: Option<String>,
 }
 
 #[derive(Serialize, Deserialize)]
@@ -134,7 +135,7 @@ pub struct Build {
     #[serde(rename = "author_avatar")]
     author_avatar: String,
     #[serde(rename = "author_email")]
-    author_email: String,
+    author_email: Option<String>,
     #[serde(rename = "link_url")]
     link_url: String,
     #[serde(rename = "signed")]
