@@ -23,7 +23,7 @@ impl Client {
     /// # Examples
     /// ```
     /// extern crate drone_api;
-    /// use drone_api::Client;
+    /// use rusty_drone::Client;
     ///
     /// let drone_client = Client::new(
     ///     "randomsupersecrettoken".to_owned(),

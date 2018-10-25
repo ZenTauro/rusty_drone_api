@@ -1,8 +1,15 @@
 [package]
-name    = "drone_api"
+name    = "rusty_drone"
+description = "A simple library to interact with a drone server"
+documentation = "https://docs.rs/drone_api"
+repository = "https://github.com/ZenTauro/rusty_drone_api/"
 version = "0.1.0"
 authors = ["zentauro <pedrogomezmartin1999@gmail.com>"]
 edition = "2018"
+license = "LGPL-3.0-or-later"
+exclude = [
+    "tests/*",
+]
 
 [dependencies]
 serde        = "1.0.70"
